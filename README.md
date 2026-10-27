@@ -12,3 +12,6 @@
 ### Validation Success
 
 ![Validation Success](screenshots/cau1_validation_success.png)
+
+## Minh chứng Câu 2
+![cau2_profile_intent.png](screenshots/cau2_profile_intent.png)

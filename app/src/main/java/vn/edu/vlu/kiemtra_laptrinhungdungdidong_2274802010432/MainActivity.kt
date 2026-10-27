@@ -1,48 +1,27 @@
 package vn.edu.vlu.kiemtra_laptrinhungdungdidong_2274802010432
-
 import android.app.Activity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 
-class LoginActivity : Activity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_profile)
 
-        val edtEmail = findViewById<EditText>(R.id.edtEmail)
-        val edtPassword = findViewById<EditText>(R.id.edtPassword)
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val tvStatus = findViewById<TextView>(R.id.tvStatus)
+        val tvEmail = findViewById<TextView>(R.id.tvEmail)
+        val btnLogout = findViewById<Button>(R.id.btnLogout)
 
-        btnLogin.setOnClickListener {
-            val email = edtEmail.text.toString().trim()
-            val password = edtPassword.text.toString()
+        // Nhận email từ LoginActivity
+        val email = intent.getStringExtra("EMAIL")
 
-            when {
-                email.isEmpty() -> {
-                    tvStatus.text = "Vui lòng nhập email!"
-                }
+        // Hiển thị email
+        tvEmail.text = "Email: ${email ?: "Không có thông tin"}"
 
-                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    tvStatus.text = "Email không hợp lệ!"
-                }
-
-                password.isEmpty() -> {
-                    tvStatus.text = "Vui lòng nhập mật khẩu!"
-                }
-
-                password.length < 6 -> {
-                    tvStatus.text = "Mật khẩu phải có ít nhất 6 ký tự!"
-                }
-
-                else -> {
-                    tvStatus.text = "Xác thực thành công!"
-                }
-            }
+        // Đăng xuất
+        btnLogout.setOnClickListener {
+            finish()
         }
     }
 }
