@@ -1,20 +1,48 @@
 package vn.edu.vlu.kiemtra_laptrinhungdungdidong_2274802010432
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.util.Patterns
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(R.layout.activity_login)
+
+        val edtEmail = findViewById<EditText>(R.id.edtEmail)
+        val edtPassword = findViewById<EditText>(R.id.edtPassword)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val tvStatus = findViewById<TextView>(R.id.tvStatus)
+
+        btnLogin.setOnClickListener {
+            val email = edtEmail.text.toString().trim()
+            val password = edtPassword.text.toString()
+
+            when {
+                email.isEmpty() -> {
+                    tvStatus.text = "Vui lòng nhập email!"
+                }
+
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    tvStatus.text = "Email không hợp lệ!"
+                }
+
+                password.isEmpty() -> {
+                    tvStatus.text = "Vui lòng nhập mật khẩu!"
+                }
+
+                password.length < 6 -> {
+                    tvStatus.text = "Mật khẩu phải có ít nhất 6 ký tự!"
+                }
+
+                else -> {
+                    tvStatus.text = "Xác thực thành công!"
+                }
+            }
         }
     }
 }
