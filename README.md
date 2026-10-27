@@ -15,3 +15,9 @@
 
 ## Minh chứng Câu 2
 ![cau2_profile_intent.png](screenshots/cau2_profile_intent.png)
+
+## Minh chứng Câu 3
+item_click_toast
+![cau3_item_click_toast.png](screenshots/cau3_item_click_toast.png)![cau3_listview_display.png](screenshots/cau3_listview_display.png)
+listview!
+[cau3_listview_display.png](screenshots/cau3_listview_display.png)
